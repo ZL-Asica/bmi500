@@ -40,4 +40,3 @@ python scanpy_pbmc.py --data-dir {data_dir} --data-set {data_set} ---out-dir {ou
 `output_dir` is where the output file is placed. defaults to `data`
 
 `data_set` is one of 'pbmc3k', 'pbmc6k', and 'pbmc10k'.
-

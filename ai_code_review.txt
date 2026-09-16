@@ -1,0 +1,37 @@
+# AI code review record
+
+Assistant: Codex
+Review model: gpt-5.5
+Date: September 15, 2026
+
+## Prompt
+
+Review `matvec_multiply.py` and `matvec_tests.py` for correctness, edge cases, clarity, and meaningful tests. Run the standard-library tests. Do not modify the implementation. Report actual findings, the test command and result, and distinguish defects from optional improvements. Do not perform or claim a manual class-partner review.
+
+## Review output
+
+No correctness defects were found in `matvec_multiply.py` for the homework scope. The functions compute dot products and matrix-vector products correctly, check incompatible dimensions, reject booleans, non-real values, NaN, and infinity, preserve inputs, and handle empty vectors and zero-column matrices.
+
+The test file is named matvec_tests.py, so it is not picked up by unittest's default test discovery. Running it directly from the repository directory works.
+
+The current Python-loop implementation is appropriate for this exercise. NumPy would be a better choice for larger numerical workloads. Renaming the starter test file or adding a package-relative import would be optional changes, so I left the course files as they were.
+
+## Test output
+
+Command:
+
+```text
+python3 -m unittest matvec_tests.py
+```
+
+Output:
+
+```text
+...........
+----------------------------------------------------------------------
+Ran 11 tests in 0.001s
+
+OK
+```
+
+This is an AI review only. It is separate from the manual class-partner review in `manual_code_review.txt`.

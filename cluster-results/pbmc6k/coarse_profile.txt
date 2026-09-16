@@ -1,0 +1,6 @@
+dataset=pbmc6k
+exit_code=0
+wall_seconds=0:42.78
+child_user_seconds=41.85
+child_system_seconds=1.95
+child_max_rss=848264

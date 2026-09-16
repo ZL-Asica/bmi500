@@ -1,0 +1,86 @@
+# AI assisted code generation record
+
+Assistant: Codex
+Model: gpt-6-astra
+Date: September 15, 2026
+
+## Task prompt
+
+Complete the parts of Homework 3 that can be done locally. For the coding part, implement the matrix-vector multiplication exercise from slide 60 using the starter comments. Add tests and keep the implementation in the forked repository.
+
+The starter comments asked for:
+
+- a dot product using a for loop
+- a matrix-vector product that calls the dot product
+- a 1000 by 1000 randomly generated demonstration
+- tests for both functions
+
+## Generated implementation
+
+The final code kept the requested simple loop structure and added input checks:
+
+```python
+def dot_product(vector_a, vector_b):
+    if len(vector_a) != len(vector_b):
+        raise ValueError("vectors must have the same length")
+    total = 0
+    for a, b in zip(vector_a, vector_b):
+        for value in (a, b):
+            if isinstance(value, bool) or not isinstance(value, Real):
+                raise TypeError("vector entries must be real numbers, excluding bool")
+            if not isinstance(value, int) and not math.isfinite(value):
+                raise ValueError("vector entries must be finite")
+        total += a * b
+    return total
+
+
+def matvec_multiply(matrix, vector):
+    for value in vector:
+        if isinstance(value, bool) or not isinstance(value, Real):
+            raise TypeError("vector entries must be real numbers, excluding bool")
+        if not isinstance(value, int) and not math.isfinite(value):
+            raise ValueError("vector entries must be finite")
+    if len(matrix) == 0:
+        return []
+    width = len(vector)
+    if any(len(row) != width for row in matrix):
+        raise ValueError("matrix rows must all match the vector length")
+    return [dot_product(row, vector) for row in matrix]
+```
+
+The demonstration uses a fixed seed and compares the result with `math.fsum`. The complete code is in `matvec_multiply.py`, and the complete tests are in `matvec_tests.py`.
+
+## Follow-up work from the same task
+
+During testing, I replaced the unavailable pytest tests with Python's standard-library `unittest` tests. I also added checks for empty vectors, zero-column matrices, ragged rows, invalid numbers, unchanged inputs, identity, and linearity. I moved vector validation before the empty-matrix return so an invalid vector is not silently accepted.
+
+## Actual verification output
+
+Command:
+
+```text
+python3 -m unittest matvec_tests.py
+```
+
+Output:
+
+```text
+...........
+----------------------------------------------------------------------
+Ran 11 tests in 0.001s
+
+OK
+```
+
+Command:
+
+```text
+python3 matvec_multiply.py
+```
+
+Output:
+
+```text
+Verified 1000x1000 matrix-vector product in 0.729122 seconds.
+First three results: [252.66209769299218, 254.89232779904555, 261.1441484737656]
+```

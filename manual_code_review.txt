@@ -1,0 +1,26 @@
+Class partner review
+
+Reviewer: Elara Liu
+Partner: Oliver Sun
+Repo: https://github.com/OliverSun0106/bmi500
+Commit reviewed: 3150abd4d4ad933db27b02320df3df7c3c192f67
+Date: September 16, 2026
+
+Files I looked at:
+- matvec_multiply.py
+- matvec_test.py
+
+Test command:
+python3 -m unittest matvec_test.py
+
+Result:
+All 15 tests passed.
+
+Notes:
+I first checked the dot product function. It uses a normal for loop over the two vectors and checks that the lengths match before doing the calculation. The code was pretty easy to follow, and the test cases I tried gave the expected results.
+
+The matrix-vector function is also straightforward. It loops through each row of the matrix and calls dot_product() with that row and the vector. Since dot_product() already checks the dimensions, it will also catch rows with the wrong length.
+
+The tests cover the main cases and quite a few edge cases, including empty inputs, mismatched dimensions, invalid values, and making sure the original inputs are not modified. There are also checks for things like NaN, infinity, and overflow, which is probably more validation than I would have added for this homework.
+
+I did not find any correctness issues that needed to be fixed. The implementation seems to work as expected, so I would leave it as-is for the submission.

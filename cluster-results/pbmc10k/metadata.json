@@ -1,0 +1,24 @@
+{
+  "dataset": "pbmc10k",
+  "input_shape": [
+    11769,
+    33538
+  ],
+  "input_nonzero_counts": 24825783,
+  "filtered_shape": [
+    11537,
+    2000
+  ],
+  "raw_genes": 20292,
+  "cluster_key": "louvain",
+  "clusters": 15,
+  "python": "3.12.12",
+  "platform": "Linux-4.18.0-553.147.1.el8_10.x86_64-x86_64-with-glibc2.28",
+  "hostname": "bignode2.priv.bmi.emory.edu",
+  "scanpy": "1.10.2",
+  "threads": 4,
+  "job_id": "1289352",
+  "cache": false,
+  "umap_components": 30,
+  "random_seed": 0
+}

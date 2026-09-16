@@ -1,0 +1,14 @@
+section,seconds
+load,0.784258
+unique_gene_names,0.000383
+filter,0.046889
+normalize,0.037830
+highly_variable_genes,0.845978
+select_hvg,0.008927
+scale,0.035645
+pca,2.549231
+neighbors,2.474964
+louvain,0.137149
+umap,9.679466
+rank_genes_groups,7.880974
+write,0.228706

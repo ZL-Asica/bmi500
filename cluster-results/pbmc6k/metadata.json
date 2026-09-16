@@ -1,0 +1,24 @@
+{
+  "dataset": "pbmc6k",
+  "input_shape": [
+    5419,
+    32738
+  ],
+  "input_nonzero_counts": 4053729,
+  "filtered_shape": [
+    5418,
+    2000
+  ],
+  "raw_genes": 14343,
+  "cluster_key": "louvain",
+  "clusters": 7,
+  "python": "3.12.12",
+  "platform": "Linux-4.18.0-553.147.1.el8_10.x86_64-x86_64-with-glibc2.28",
+  "hostname": "bignode5.priv.bmi.emory.edu",
+  "scanpy": "1.10.2",
+  "threads": 4,
+  "job_id": "1289351",
+  "cache": false,
+  "umap_components": 30,
+  "random_seed": 0
+}

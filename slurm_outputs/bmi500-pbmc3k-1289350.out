@@ -1,0 +1,93 @@
+JOB=1289350 HOST=bignode6.priv.bmi.emory.edu DATASET=pbmc3k
+2026-09-15T19:48:48-04:00
+/home/zliu837/bmi500-homework3/bmi500/.venv-cluster312/lib/python3.12/site-packages/anndata/utils.py:434: FutureWarning: Importing read_csv from `anndata` is deprecated. Import anndata.io.read_csv instead.
+  warnings.warn(msg, FutureWarning)
+/home/zliu837/bmi500-homework3/bmi500/.venv-cluster312/lib/python3.12/site-packages/anndata/utils.py:434: FutureWarning: Importing read_excel from `anndata` is deprecated. Import anndata.io.read_excel instead.
+  warnings.warn(msg, FutureWarning)
+/home/zliu837/bmi500-homework3/bmi500/.venv-cluster312/lib/python3.12/site-packages/anndata/utils.py:434: FutureWarning: Importing read_hdf from `anndata` is deprecated. Import anndata.io.read_hdf instead.
+  warnings.warn(msg, FutureWarning)
+/home/zliu837/bmi500-homework3/bmi500/.venv-cluster312/lib/python3.12/site-packages/anndata/utils.py:434: FutureWarning: Importing read_loom from `anndata` is deprecated. Import anndata.io.read_loom instead.
+  warnings.warn(msg, FutureWarning)
+/home/zliu837/bmi500-homework3/bmi500/.venv-cluster312/lib/python3.12/site-packages/anndata/utils.py:434: FutureWarning: Importing read_mtx from `anndata` is deprecated. Import anndata.io.read_mtx instead.
+  warnings.warn(msg, FutureWarning)
+/home/zliu837/bmi500-homework3/bmi500/.venv-cluster312/lib/python3.12/site-packages/anndata/utils.py:434: FutureWarning: Importing read_text from `anndata` is deprecated. Import anndata.io.read_text instead.
+  warnings.warn(msg, FutureWarning)
+/home/zliu837/bmi500-homework3/bmi500/.venv-cluster312/lib/python3.12/site-packages/anndata/utils.py:434: FutureWarning: Importing read_umi_tools from `anndata` is deprecated. Import anndata.io.read_umi_tools instead.
+  warnings.warn(msg, FutureWarning)
+/home/zliu837/bmi500-homework3/bmi500/.venv-cluster312/lib/python3.12/site-packages/louvain/__init__.py:54: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+  from pkg_resources import get_distribution, DistributionNotFound
+scanpy==1.10.2 anndata==0.11.4 umap==0.5.7 numpy==1.26.4 scipy==1.14.1 pandas==2.2.3 scikit-learn==1.5.2 statsmodels==0.15.0 igraph==0.11.6 louvain==0.8.2 pynndescent==0.6.0
+using 4 threads
+--> This might be very slow. Consider passing `cache=True`, which enables much faster reading from a cache file.
+PROFILE section=load seconds=0.784258
+PROFILE section=unique_gene_names seconds=0.000383
+filtered out 19024 genes that are detected in less than 3 cells
+PROFILE section=filter seconds=0.046889
+normalizing counts per cell
+    finished (0:00:00)
+PROFILE section=normalize seconds=0.037830
+extracting highly variable genes
+    finished (0:00:00)
+--> added
+    'highly_variable', boolean vector (adata.var)
+    'means', float vector (adata.var)
+    'dispersions', float vector (adata.var)
+    'dispersions_norm', float vector (adata.var)
+PROFILE section=highly_variable_genes seconds=0.845978
+PROFILE section=select_hvg seconds=0.008927
+... as `zero_center=True`, sparse input is densified and may lead to large memory consumption
+PROFILE section=scale seconds=0.035645
+computing PCA
+    with n_comps=30
+    finished (0:00:02)
+PROFILE section=pca seconds=2.549231
+computing neighbors
+    using 'X_pca' with n_pcs = 30
+    finished: added to `.uns['neighbors']`
+    `.obsp['distances']`, distances for each pair of neighbors
+    `.obsp['connectivities']`, weighted adjacency matrix (0:00:02)
+PROFILE section=neighbors seconds=2.474964
+running Louvain clustering
+    using the "louvain" package of Traag (2017)
+    finished: found 4 clusters and added
+    'louvain', the cluster labels (adata.obs, categorical) (0:00:00)
+PROFILE section=louvain seconds=0.137149
+computing UMAP
+    finished: added
+    'X_umap', UMAP coordinates (adata.obsm) (0:00:09)
+PROFILE section=umap seconds=9.679466
+ranking genes
+    finished: added to `.uns['rank_genes_groups']`
+    'names', sorted np.recarray to be indexed by group ids
+    'scores', sorted np.recarray to be indexed by group ids
+    'logfoldchanges', sorted np.recarray to be indexed by group ids
+    'pvals', sorted np.recarray to be indexed by group ids
+    'pvals_adj', sorted np.recarray to be indexed by group ids (0:00:07)
+PROFILE cprofile_file=cluster-results/pbmc3k/rank_genes_groups.prof
+PROFILE section=rank_genes_groups seconds=7.880974
+PROFILE section=write seconds=0.228706
+METADATA {"dataset": "pbmc3k", "input_shape": [2700, 32738], "input_nonzero_counts": 2286884, "filtered_shape": [2700, 2000], "raw_genes": 13714, "cluster_key": "louvain", "clusters": 4, "python": "3.12.12", "platform": "Linux-4.18.0-553.147.1.el8_10.x86_64-x86_64-with-glibc2.28", "hostname": "bignode6.priv.bmi.emory.edu", "scanpy": "1.10.2", "threads": 4, "job_id": "1289350", "cache": false, "umap_components": 30, "random_seed": 0}
+PROFILE timings_file=cluster-results/pbmc3k/pbmc3k.timings.csv
+	Command being timed: "python -u scanpy_pbmc.py --data-dir data --data-set pbmc3k --out-dir cluster-results/pbmc3k --num-threads 4 --profile-output cluster-results/pbmc3k/rank_genes_groups.prof"
+	User time (seconds): 35.52
+	System time (seconds): 7.31
+	Percent of CPU this job got: 105%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:40.45
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 775788
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 2385
+	Minor (reclaiming a frame) page faults: 356643
+	Voluntary context switches: 16552
+	Involuntary context switches: 138747
+	Swaps: 0
+	File system inputs: 529504
+	File system outputs: 96320
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
